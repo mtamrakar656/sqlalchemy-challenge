@@ -28,7 +28,7 @@ This exercise includes using Python and SQLAlchemy to do basic climate analysis 
 * A query to retrieve the last 12 months of temperature observation data (TOBS) was designed and filtered by the station with the highest number of observations.
 * The last 12 months of temperature observation data for this station were queried.
 * The results as a histogram with bins=12 were plotted.
-* 
+
 ![](Images/Temperatures.png)
 
 
