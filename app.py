@@ -1,4 +1,5 @@
 import numpy as np
+import datetime as dt
 
 import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
@@ -19,7 +20,7 @@ Base.prepare(engine, reflect=True)
 
 # Save reference to the table
 measurement = Base.classes.measurement
-station = Base.classes.station
+Stations = Base.classes.station
 
 ##################################################
 # Flask Setup
@@ -48,9 +49,9 @@ def precipitation():
     session = Session(engine)
 
     """Return a list of last 12 months of Precipitation data"""
-    # Query all Precipitation
+    # Query Precipitation for last 12 months
     results = session.query(measurement.date, measurement.prcp).\
-        filter(measurement.date>= "2016-08-23").all()
+        filter(measurement.date >= "2016-08-23").all()
 
     session.close()
 
@@ -63,6 +64,61 @@ def precipitation():
         precipitation_data.append(precipitation_dict)
 
     return jsonify(precipitation_data)
+
+@app.route("/api/v1.0/stations")
+def stations():
+    # Create our session(link) from Python to the DB
+    session = Session(engine)
+
+    """Return a list of last 12 months of Precipitation data"""
+    # Query all Stations
+    station_query = session.query(Stations.station, Stations.name).all()
+        
+
+    session.close()
+
+    # Create a dictionary from the row data and append to a list of precipitation_data
+    stations_data = []
+    for station, name in station_query:
+        stations_dict = {}
+        stations_dict["station"] = station
+        stations_dict["name"] = name
+        stations_data.append(stations_dict)
+
+    return jsonify(stations_data)
+
+
+@app.route("/api/v1.0/tobs")
+def tobs():
+    # Create our session(link) from Python to the DB
+    session = Session(engine)
+
+    """Return a list of dates and temperature observations of the most active station station
+    for the last year of data"""
+    
+    # Query the most recent data in the dataset
+    recent_date = session.query(measurement.date).order_by(measurement.date.desc()).first()
+
+    # Query date 12 months prior
+    last_year_date = dt.datetime
+
+    # Query all Precipitation
+    results = session.query(measurement.date, measurement.prcp).\
+        filter(measurement.date >= "2016-08-23").all()
+
+    session.close()
+
+    # Create a dictionary from the row data and append to a list of precipitation_data
+    precipitation_data = []
+    for date, prcp in results:
+        precipitation_dict = {}
+        precipitation_dict["date"] = date
+        precipitation_dict["precipitation"] = prcp
+        precipitation_data.append(precipitation_dict)
+
+    return jsonify(precipitation_data)
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
