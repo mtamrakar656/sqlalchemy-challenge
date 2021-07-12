@@ -100,23 +100,24 @@ def tobs():
     recent_date = session.query(measurement.date).order_by(measurement.date.desc()).first()
 
     # Query date 12 months prior
-    last_year_date = dt.datetime
+    last_year_date = (dt.datetime.strptime(recent_date[0], '%Y-%m-%d') \
+        - dt.timedelta(days=365)).strftime('%Y-%m-%d')
 
-    # Query all Precipitation
-    results = session.query(measurement.date, measurement.prcp).\
-        filter(measurement.date >= "2016-08-23").all()
+    # Query date and temperature values
+    temperature_query = session.query(measurement.date, measurement.tobs).\
+        filter(measurement.date >= last_year_date).all()
 
     session.close()
 
     # Create a dictionary from the row data and append to a list of precipitation_data
-    precipitation_data = []
-    for date, prcp in results:
-        precipitation_dict = {}
-        precipitation_dict["date"] = date
-        precipitation_dict["precipitation"] = prcp
-        precipitation_data.append(precipitation_dict)
+    temperature_data = []
+    for date, tobs in temperature_query:
+        temperature_dict = {}
+        temperature_dict["date"] = date
+        temperature_dict["temperature"] = tobs
+        temperature_data.append(temperature_dict)
 
-    return jsonify(precipitation_data)
+    return jsonify(temperature_data)
 
 
 
