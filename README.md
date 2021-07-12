@@ -2,4 +2,4 @@
 
 ## Climate Analysis and Exploration
 
-![ALT](./Images/Precipitation.png)
+![ALT](/Images/Precipitation.png)
