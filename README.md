@@ -37,22 +37,22 @@ This exercise includes using Python and SQLAlchemy to do basic climate analysis 
 ### Routes
 
 * Home page.
-** All routes that are available are listed.
+    - All routes that are available are listed.
 
 * /api/v1.0/precipitation
-** The query results were converted to a dictionary using date as the key and prcp as the value.
-** The JSON representation of your dictionary was returned.
+    - The query results were converted to a dictionary using date as the key and prcp as the value.
+    - The JSON representation of your dictionary was returned.
 
 * /api/v1.0/stations
-** A JSON list of stations from the dataset was returned.
+    - A JSON list of stations from the dataset was returned.
 
 * /api/v1.0/tobs
-** The dates and temperature observations of the most active station for the last year of data was queried.
-** A JSON list of temperature observations (TOBS) for the previous year returned.
+    - The dates and temperature observations of the most active station for the last year of data was queried.
+    - A JSON list of temperature observations (TOBS) for the previous year returned.
 
 * /api/v1.0/<start> and /api/v1.0/<start>/<end>
-** A JSON list of the minimum temperature, the average temperature, and the max temperature for a given start or start-end range was returned.
-** When given the start only, TMIN, TAVG, and TMAX for all dates greater than and equal to the start date was calculated.
-** When given the start and the end date, the TMIN, TAVG, and TMAX for dates between the start and end date inclusive was calculated.
+    - A JSON list of the minimum temperature, the average temperature, and the max temperature for a given start or start-end range was returned.
+    - When given the start only, TMIN, TAVG, and TMAX for all dates greater than and equal to the start date was calculated.
+    - When given the start and the end date, the TMIN, TAVG, and TMAX for dates between the start and end date inclusive was calculated.
   
 ![](Images/Flask_App.png)
