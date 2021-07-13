@@ -1,6 +1,6 @@
 # sqlalchemy-challenge
 
-![](Images/surfs_up.png)
+![](Images/surfs-up.png)
 
 ## Climate Analysis and Exploration
 
