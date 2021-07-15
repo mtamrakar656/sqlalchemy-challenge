@@ -63,9 +63,35 @@ This exercise includes using Python and SQLAlchemy to do basic climate analysis 
 ## Temperature Analysis I
     
 ## Temperature Analysis II
+    
+* This analysis is to analyse historical data to find out what the temperature has previously looked like since we are worried that the weather will be less than ideal.
+    
+* A function called calc_temps that will accept a start date and end date in the format %Y-%m-%d was used. The function returns the minimum, average, and maximum temperatures for that range of dates.
+    
+* The calc_temps function was used to calculate the min, avg, and max temperatures for our trip using the matching dates from a previous year.
+    
+* The min, avg, and max temperature from your previous query were plotted as a bar chart.
+    - "Trip Avg Temp" was used as the title.
+    - The average temperature was used as the bar height (y value).
+    - The peak-to-peak (TMAX-TMIN) value was used as the y error bar (YERR).
+    
 
 ![](Images/Trip_Avg_Temp.png)    
     
 ## Daily Rainfall Average
+
+* The rainfall per weather station using the previous year's matching dates was calculated.
+    - The result was sorted in descending order by precipitation amount and list the station, name, latitude, longitude, and elevation.
+
+* The daily normals were calculated. Normals are the averages for the min, avg, and max temperatures. We were provided with a function called daily_normals that will calculate the daily normals for a specific date. This date string will be in the format %m-%d. We used all historic TOBS that match that date string.
+    - Set the start and end date of the trip.
+    - Use the date to create a range of dates.
+    - Strip off the year and save a list of strings in the format %m-%d.
+    - Use the daily_normals function to calculate the normals for each date string and append the results to a list called normals.
+
+* The list of daily normals was loaded into a Pandas DataFrame and the index was set equal to the date.
+    
+* Pandas was used to plot an area plot (stacked=False) for the daily normals.
+    
     
 ![](Images/Daily_Normals.png)
