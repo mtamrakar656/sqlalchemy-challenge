@@ -58,3 +58,14 @@ This exercise includes using Python and SQLAlchemy to do basic climate analysis 
     - When given the start and the end date, the TMIN, TAVG, and TMAX for dates between the start and end date inclusive was calculated.
   
 ![](Images/Flask_App.png)
+    
+    
+## Temperature Analysis I
+    
+## Temperature Analysis II
+
+![](Images/Trip_Avg_Temp.png)    
+    
+## Daily Rainfall Average
+    
+![](Images/Daily_Normals.png)
