@@ -61,6 +61,13 @@ This exercise includes using Python and SQLAlchemy to do basic climate analysis 
     
     
 ## Temperature Analysis I
+
+* Although we are getting the temperatures from the same stations the months for which the temperatures 
+are recorded are different (which is June and December) which makes the datasets independent of each other, 
+an unpaired t-test is used in this analysis.
+
+* Based on the p value, there is low significant relationship for the temperatures in June and December.
+    
     
 ## Temperature Analysis II
     
